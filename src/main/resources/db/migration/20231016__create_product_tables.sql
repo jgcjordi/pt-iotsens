@@ -6,16 +6,17 @@ CREATE TABLE public.brand (
 CREATE TABLE public.product (
     id NUMERIC NOT NULL PRIMARY KEY,
     brand_id NUMERIC,
-    name VARCHAR
+    name VARCHAR,
+    FOREIGN KEY (brand_id) REFERENCES public.brand(id)
 );
 
 CREATE TABLE public.price (
-    brand_id NUMERIC,
     start_date TIMESTAMP,
     end_date TIMESTAMP,
     price_list NUMERIC,
     product_id NUMERIC,
     priority NUMERIC,
     price NUMERIC,
-    curr VARCHAR
+    curr VARCHAR,
+    FOREIGN KEY (product_id) REFERENCES public.product(id)
 );
