@@ -10,5 +10,5 @@ FROM openjdk:17-slim-buster
 WORKDIR $APP_DIR
 EXPOSE 8080
 COPY --from=builder /app/build/libs/pt-iotsens-0.1.0.jar .
-CMD java -jar topbrawl-api-0.1.0.jar
+CMD java -jar pt-iotsens-0.1.0.jar
 

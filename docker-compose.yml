@@ -2,15 +2,18 @@ version: '3.7'
 
 services:
   db:
-    image: postgres:latest
+    image: postgres
     container_name: iotsens-postgress
     restart: always
     ports:
       - "5432:5432"
+    volumes:
+      - ./src/main/resources/db/migration:/docker-entrypoint-initdb.d
+      - ./docker/database/99999999__mock_data.sql:/docker-entrypoint-initdb.d/99999999__mock_data.sql
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=iotsens_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: iotsens_db
 
   app:
     build:
@@ -21,6 +24,4 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/iotsens_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/iotsens_db?user=user&password=password
