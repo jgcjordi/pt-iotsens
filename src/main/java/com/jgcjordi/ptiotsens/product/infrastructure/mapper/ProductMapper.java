@@ -12,7 +12,8 @@ public class ProductMapper {
     public static Product convertToDomain(ProductEntity productEntity) {
         return new Product(
                 productEntity.getId(),
-                productEntity.getName()
+                productEntity.getName(),
+                productEntity.getBrandId()
         );
     }
 }

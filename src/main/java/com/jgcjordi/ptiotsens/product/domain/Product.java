@@ -7,10 +7,12 @@ public class Product {
 
     public Product(
             Long id,
-            String name
+            String name,
+            Long brandId
     ) {
         this.id = id;
         this.name = name;
+        this.brandId = brandId;
     }
 
     public Long getId() {
