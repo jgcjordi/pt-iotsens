@@ -13,11 +13,4 @@ public class BrandMapper {
                 brandEntity.getName()
         );
     }
-
-//    public BrandEntity convertToEntity(Brand product) {
-//        return new BrandEntity(
-//                product.getId(),
-//                product.getName()
-//        );
-//    }
 }

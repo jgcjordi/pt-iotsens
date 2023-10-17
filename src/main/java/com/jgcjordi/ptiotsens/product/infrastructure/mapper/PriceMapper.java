@@ -19,17 +19,4 @@ public class PriceMapper {
                 priceEntity.getCurr()
         );
     }
-
-//    public PriceEntity convertToEntity(Price price) {
-//
-//        return new PriceEntity(
-//                price.getStartDate(),
-//                price.getEndDate(),
-//                price.getPriceList(),
-//                price.getPriority(),
-//                price.getPrice(),
-//                price.getCurr(),
-//                new ProductEntity(price.getProductId())
-//        );
-//    }
 }

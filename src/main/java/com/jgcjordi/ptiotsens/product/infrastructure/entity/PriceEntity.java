@@ -1,15 +1,17 @@
 package com.jgcjordi.ptiotsens.product.infrastructure.entity;
 
 import com.jgcjordi.ptiotsens.product.domain.Currency;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+
 import org.hibernate.annotations.DynamicUpdate;
 import java.time.LocalDateTime;
 
@@ -41,7 +43,7 @@ public class PriceEntity {
     @Enumerated(EnumType.STRING)
     private Currency curr;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false)
     private ProductEntity product;
 
