@@ -6,10 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 @Entity(name = "brand")
-@DynamicUpdate
 public class BrandEntity {
 
     @Id
@@ -22,11 +19,6 @@ public class BrandEntity {
 
     public BrandEntity() {
 
-    }
-
-    public BrandEntity(Long id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public Long getId() {

@@ -5,15 +5,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import org.hibernate.annotations.DynamicUpdate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "product")
-@DynamicUpdate
 public class ProductEntity {
 
     @Id
@@ -24,27 +17,14 @@ public class ProductEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private BrandEntity brand;
+    @Column(name = "brand_id")
+    private Long brandId;
 
-    @OneToMany
-    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false)
-    private List<PriceEntity> prices = new ArrayList<>();
+    @Column(name = "product_id")
+    private Long productId;
 
     public ProductEntity() {
 
-    }
-
-    public ProductEntity(Long id, String name, BrandEntity brand, List<PriceEntity> prices) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.prices = prices;
-    }
-
-    public ProductEntity(Long id) {
-        this.id = id;
     }
 
     public Long getId() {
@@ -63,19 +43,19 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public BrandEntity getBrand() {
-        return brand;
+    public Long getBrandId() {
+        return brandId;
     }
 
-    public void setBrand(BrandEntity brand) {
-        this.brand = brand;
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 
-    public List<PriceEntity> getPrices() {
-        return prices;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setPrices(List<PriceEntity> prices) {
-        this.prices = prices;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

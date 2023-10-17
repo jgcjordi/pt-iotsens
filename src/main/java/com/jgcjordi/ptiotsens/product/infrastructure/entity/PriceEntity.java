@@ -8,15 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 
 import org.hibernate.annotations.DynamicUpdate;
 import java.time.LocalDateTime;
 
 @Entity(name = "price")
-@DynamicUpdate
 public class PriceEntity {
 
     @Id
@@ -43,23 +39,10 @@ public class PriceEntity {
     @Enumerated(EnumType.STRING)
     private Currency curr;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false)
-    private ProductEntity product;
+    @Column(name = "product_id")
+    private Long productId;
 
     public PriceEntity() {
-
-    }
-
-    public PriceEntity(
-            LocalDateTime startDate,
-            LocalDateTime endDate,
-            int priceList,
-            int priority,
-            Currency price,
-            int curr,
-            ProductEntity product)
-    {
 
     }
 
@@ -112,11 +95,11 @@ public class PriceEntity {
         this.curr = curr;
     }
 
-    public ProductEntity getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(ProductEntity product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

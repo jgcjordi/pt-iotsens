@@ -1,7 +1,7 @@
 package com.jgcjordi.ptiotsens.product.infrastructure.controller;
 
-import com.jgcjordi.ptiotsens.product.application.GetProduct;
-import com.jgcjordi.ptiotsens.product.domain.Product;
+import com.jgcjordi.ptiotsens.product.application.GetPrice;
+import com.jgcjordi.ptiotsens.product.domain.Price;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,18 +16,18 @@ import java.time.LocalDateTime;
 @RequestMapping(path = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
 
-    private final GetProduct getProduct;
+    private final GetPrice getPrice;
 
-    public ProductController(GetProduct getProduct) {
-        this.getProduct = getProduct;
+    public ProductController(GetPrice getPrice) {
+        this.getPrice = getPrice;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(
+    public ResponseEntity<Price> getProduct(
             @PathVariable("id") Long id,
             @RequestParam("applicationDate") String applicationDate
     ) {
-        return ResponseEntity.ok(getProduct.invoke(id, LocalDateTime.parse(applicationDate)));
+        return ResponseEntity.ok(getPrice.invoke(id, LocalDateTime.parse(applicationDate)));
     }
 }
 
