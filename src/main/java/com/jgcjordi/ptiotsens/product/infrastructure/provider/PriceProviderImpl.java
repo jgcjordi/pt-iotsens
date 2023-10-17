@@ -7,6 +7,8 @@ import com.jgcjordi.ptiotsens.product.infrastructure.mapper.PriceMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class PriceProviderImpl implements PriceProvider {
@@ -21,8 +23,8 @@ public class PriceProviderImpl implements PriceProvider {
 
     @Transactional
     @Override
-    public Price findProductPriceBetweenDates(Long id, LocalDateTime applicationDate) {
-        return PriceMapper.convertToDomain(
-                priceRepository.findPriceOfProductBetweenDatesAndBrandId(id, applicationDate));
+    public List<Price> findProductPricesBetweenDates(Long id, LocalDateTime applicationDate) {
+        return priceRepository.findPricesOfProductBetweenDatesAndBrandId(id, applicationDate)
+                .stream().map(PriceMapper::convertToDomain).collect(Collectors.toList());
     }
 }
