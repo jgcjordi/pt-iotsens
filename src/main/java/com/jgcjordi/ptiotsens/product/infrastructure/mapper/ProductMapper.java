@@ -1,8 +1,6 @@
 package com.jgcjordi.ptiotsens.product.infrastructure.mapper;
 
-import com.jgcjordi.ptiotsens.product.domain.Price;
 import com.jgcjordi.ptiotsens.product.domain.Product;
-import com.jgcjordi.ptiotsens.product.infrastructure.entity.PriceEntity;
 import com.jgcjordi.ptiotsens.product.infrastructure.entity.ProductEntity;
 import org.springframework.stereotype.Component;
 
