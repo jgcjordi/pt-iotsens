@@ -7,6 +7,8 @@ import com.jgcjordi.ptiotsens.product.infrastructure.mapper.ProductMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ProductProviderImpl implements ProductProvider {
 
@@ -21,14 +23,11 @@ public class ProductProviderImpl implements ProductProvider {
         this.productRepository = productRepository;
     }
 
-    @Override
-    public Product save(Product product) { //TODO
-        return null;
-    }
-
     @Transactional
     @Override
-    public Product findProductByIdAndPriceFromSaleDate(Long id) {
-        return productMapper.convertToDomain(productRepository.getReferenceById(id));
+    public Product findProductByIdWithPriceBetweenDates(Long id, LocalDateTime applicationDate) {
+        System.out.println(applicationDate);
+        return productMapper.convertToDomain(
+                productRepository.findProductWithPriceBetweenDatesAndId(id, applicationDate));
     }
 }

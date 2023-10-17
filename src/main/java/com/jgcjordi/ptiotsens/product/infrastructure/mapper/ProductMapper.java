@@ -12,8 +12,7 @@ public class ProductMapper {
     private final BrandMapper brandMapper;
 
     public ProductMapper(
-            BrandMapper brandMapper,
-            PriceMapper priceMapper
+            BrandMapper brandMapper
     ) {
         this.brandMapper = brandMapper;
     }
