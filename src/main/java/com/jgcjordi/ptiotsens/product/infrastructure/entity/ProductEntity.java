@@ -1,7 +1,5 @@
 package com.jgcjordi.ptiotsens.product.infrastructure.entity;
 
-import com.jgcjordi.ptiotsens.product.domain.Brand;
-import com.jgcjordi.ptiotsens.product.domain.Price;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +9,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import org.hibernate.annotations.DynamicUpdate;
-import jakarta.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +28,13 @@ public class ProductEntity {
     @JoinColumn(name = "brand_id")
     private BrandEntity brand;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false)
     private List<PriceEntity> prices = new ArrayList<>();
+
+    public ProductEntity() {
+
+    }
 
     public ProductEntity(Long id, String name, BrandEntity brand, List<PriceEntity> prices) {
         this.id = id;

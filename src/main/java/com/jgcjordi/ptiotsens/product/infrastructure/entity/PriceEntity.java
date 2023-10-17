@@ -1,6 +1,9 @@
 package com.jgcjordi.ptiotsens.product.infrastructure.entity;
 
 import com.jgcjordi.ptiotsens.product.domain.Currency;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
@@ -10,9 +13,14 @@ import jakarta.persistence.JoinColumn;
 import org.hibernate.annotations.DynamicUpdate;
 import java.time.LocalDateTime;
 
-@Entity(name = "product")
+@Entity(name = "price")
 @DynamicUpdate
 public class PriceEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "start_date")
     private LocalDateTime startDate;
@@ -34,8 +42,12 @@ public class PriceEntity {
     private Currency curr;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false)
     private ProductEntity product;
+
+    public PriceEntity() {
+
+    }
 
     public PriceEntity(
             LocalDateTime startDate,

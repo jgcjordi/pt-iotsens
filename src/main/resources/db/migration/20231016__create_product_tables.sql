@@ -1,20 +1,21 @@
 CREATE TABLE public.brand (
-    id NUMERIC NOT NULL PRIMARY KEY,
+    id BIGINT NOT NULL PRIMARY KEY,
     name VARCHAR
 );
 
 CREATE TABLE public.product (
-    id NUMERIC NOT NULL PRIMARY KEY,
-    brand_id NUMERIC,
+    id BIGINT NOT NULL PRIMARY KEY,
     name VARCHAR,
+    brand_id BIGINT,
     FOREIGN KEY (brand_id) REFERENCES public.brand(id)
 );
 
 CREATE TABLE public.price (
+    id BIGINT NOT NULL PRIMARY KEY,
     start_date TIMESTAMP,
     end_date TIMESTAMP,
     price_list NUMERIC,
-    product_id NUMERIC,
+    product_id BIGINT,
     priority NUMERIC,
     price NUMERIC,
     curr VARCHAR,

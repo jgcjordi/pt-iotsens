@@ -26,9 +26,6 @@ dependencies {
 	// DB
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql:42.5.4")
-	implementation("org.flywaydb:flyway-core")
-	implementation("com.vladmihalcea:hibernate-types-52:2.20.0")
-	implementation("junit:junit:4.13.2")
 }
 
 tasks.named('test') {
