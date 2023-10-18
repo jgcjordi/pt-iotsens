@@ -17,7 +17,7 @@ public class Price {
             int priceList,
             Long productId,
             int priority,
-            int price,
+            double price,
             Currency curr
     ) {
         this.startDate = startDate;

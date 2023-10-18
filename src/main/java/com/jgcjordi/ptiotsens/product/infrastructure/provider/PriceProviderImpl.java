@@ -4,7 +4,6 @@ import com.jgcjordi.ptiotsens.product.domain.Price;
 import com.jgcjordi.ptiotsens.product.domain.provider.PriceProvider;
 import com.jgcjordi.ptiotsens.product.infrastructure.jpa.PriceRepository;
 import com.jgcjordi.ptiotsens.product.infrastructure.mapper.PriceMapper;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,7 +20,6 @@ public class PriceProviderImpl implements PriceProvider {
         this.priceRepository = priceRepository;
     }
 
-    @Transactional
     @Override
     public List<Price> findProductPricesBetweenDates(Long id, LocalDateTime applicationDate) {
         return priceRepository.findPricesOfProductBetweenDatesAndBrandId(id, applicationDate)

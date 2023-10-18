@@ -20,11 +20,14 @@ public class ProductEntity {
     @Column(name = "brand_id")
     private Long brandId;
 
-    @Column(name = "product_id")
-    private Long productId;
-
     public ProductEntity() {
 
+    }
+
+    public ProductEntity(Long id, String name, Long brandId) {
+        this.id = id;
+        this.name = name;
+        this.brandId = brandId;
     }
 
     public Long getId() {
@@ -49,13 +52,5 @@ public class ProductEntity {
 
     public void setBrandId(Long brandId) {
         this.brandId = brandId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 }

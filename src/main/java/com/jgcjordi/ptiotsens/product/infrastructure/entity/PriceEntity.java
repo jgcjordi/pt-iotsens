@@ -9,7 +9,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 
-import org.hibernate.annotations.DynamicUpdate;
 import java.time.LocalDateTime;
 
 @Entity(name = "price")
@@ -33,7 +32,7 @@ public class PriceEntity {
     private int priority;
 
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @Column(name = "curr")
     @Enumerated(EnumType.STRING)
@@ -46,6 +45,33 @@ public class PriceEntity {
 
     }
 
+    public PriceEntity(
+            Long id,
+            LocalDateTime startDate,
+            LocalDateTime endDate,
+            int priceList,
+            int priority,
+            double price,
+            Currency curr,
+            Long productId
+    ) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.priceList = priceList;
+        this.priority = priority;
+        this.price = price;
+        this.curr = curr;
+        this.productId = productId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDateTime getStartDate() {
         return startDate;
@@ -79,11 +105,11 @@ public class PriceEntity {
         this.priority = priority;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

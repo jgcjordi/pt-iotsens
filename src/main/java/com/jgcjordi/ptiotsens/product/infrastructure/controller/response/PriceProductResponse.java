@@ -10,6 +10,9 @@ public class PriceProductResponse {
     private LocalDateTime endDate;
     private Double finalPrice;
 
+    public PriceProductResponse() {
+    }
+
     public PriceProductResponse(
             Long productId,
             Long brandId,
