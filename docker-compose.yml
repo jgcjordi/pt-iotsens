@@ -23,4 +23,6 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/iotsens_db?user=user&password=password
+      DATABASE_URL: jdbc:postgresql://iotsens-postgress:5432/iotsens_db
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: password
