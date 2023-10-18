@@ -118,5 +118,6 @@ class PriceControllerTest {
 
         PriceProductResponse priceProductResponse5 = objectMapper.readValue(responseBody5, PriceProductResponse.class);
         Assertions.assertThat(priceProductResponse5.getFinalPrice()).isEqualTo(expectedPrice);
+        Assertions.assertThat(priceProductResponse5.getBrandId()).isEqualTo(1L);
     }
 }
