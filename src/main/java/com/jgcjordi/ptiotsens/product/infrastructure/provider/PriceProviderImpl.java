@@ -27,4 +27,10 @@ public class PriceProviderImpl implements PriceProvider {
         return priceRepository.findPricesOfProductBetweenDatesAndBrandId(id, applicationDate)
                 .stream().map(PriceMapper::convertToDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public List<Price> getAllPrices() {
+        return priceRepository.findAll()
+                .stream().map(PriceMapper::convertToDomain).collect(Collectors.toList());
+    }
 }

@@ -12,17 +12,17 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public class GetProductPrice {
+public class PriceProducts {
     private final PriceProvider priceProvider;
     private final ProductProvider productProvider;
 
-    public GetProductPrice(PriceProvider priceProvider, ProductProvider productProvider) {
+    public PriceProducts(PriceProvider priceProvider, ProductProvider productProvider) {
         this.priceProvider = priceProvider;
         this.productProvider = productProvider;
 
     }
 
-    public PriceProductResponse invoke(Long id, LocalDateTime applicationDate) {
+    public PriceProductResponse getPriceOfProduct(Long id, LocalDateTime applicationDate) {
         List<Price> prices = priceProvider.findProductPricesBetweenDates(id, applicationDate);
         if(!prices.isEmpty()){
             Price price = prices.stream().max(Comparator.comparingInt(Price::getPriority)).get();
@@ -30,6 +30,10 @@ public class GetProductPrice {
             return toPriceProductResponse(price, product);
         }
         return null;
+    }
+
+    public List<Price> getAllPrices() {
+        return priceProvider.getAllPrices();
     }
 
     private PriceProductResponse toPriceProductResponse(Price price, Product product) {
@@ -42,5 +46,4 @@ public class GetProductPrice {
                 price.getPrice()
         );
     }
-
 }

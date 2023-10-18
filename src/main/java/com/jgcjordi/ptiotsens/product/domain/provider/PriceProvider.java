@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PriceProvider {
     List<Price> findProductPricesBetweenDates(Long id, LocalDateTime applicationDate);
+    List<Price> getAllPrices();
 }
