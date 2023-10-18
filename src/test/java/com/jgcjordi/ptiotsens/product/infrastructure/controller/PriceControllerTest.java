@@ -39,7 +39,7 @@ class PriceControllerTest {
         private MockMvc mockMvc;
 
         @Test
-        void shouldReturnTheExpectedPrices() throws Exception {
+        void shouldReturnTheExpectedResponses() throws Exception {
             BrandEntity bandEntity = new BrandEntity(1L,"ACME");
             ProductEntity productEntity = new ProductEntity(35455L, "Elastic bed",1L);
             PriceEntity priceEntity1 =
