@@ -3,8 +3,6 @@ package com.jgcjordi.ptiotsens.product.infrastructure.entity;
 import com.jgcjordi.ptiotsens.product.domain.Currency;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
@@ -15,7 +13,6 @@ import java.time.LocalDateTime;
 public class PriceEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
